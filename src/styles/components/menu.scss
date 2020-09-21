@@ -1,0 +1,147 @@
+.products {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  overflow: hidden;
+  background: $white;
+  .close,
+  .menu-title {
+    z-index: 100;
+    position: absolute;
+    color: $black;
+    top: 3rem;
+    right: 5.8rem;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.05rem;
+    cursor: pointer;
+    svg {
+      height: 30px;
+    }
+  }
+  .menu-title {
+    top: 3rem;
+    left: 5.8rem;
+    font-size: 1.4rem;
+  }
+
+  .menu {
+    height: 100vh;
+    .menu-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 0;
+      height: 100vh;
+      ul {
+        display: block;
+        width: 100vh;
+        li {
+          position: relative;
+          width: 100%;
+          height: 115px;
+          a {
+            height: 100%;
+            .wrapper {
+              height: 100%;
+              display: flex;
+              align-items: flex-end;
+              .title {
+                margin: 0 1rem;
+                h2 {
+                  overflow: hidden;
+                  margin: 0;
+                  font-size: 4rem;
+                  font-weight: 500;
+                }
+              }
+              .thumbnail {
+                margin-bottom: 1.4rem;
+                overflow: hidden;
+                position: absolute;
+                height: 5rem;
+                width: 7.6rem;
+                left: 30rem;
+                .mask {
+                  background: $white;
+                  width: 100%;
+                  height: 100%;
+                  position: absolute;
+                  top: 0;
+                }
+                img {
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  right: 0;
+                }
+              }
+              .floating-image {
+                pointer-events: none;
+                width: 24rem;
+                position: absolute;
+                // z-index: 99;
+                // overflow: hidden;
+                opacity: 0;
+                // img {
+                // }
+              }
+
+              .line {
+                height: 1px;
+                width: 100%;
+                background: $black;
+                margin-bottom: 0.8rem;
+                position: relative;
+                display: flex;
+                align-items: center;
+                &.flex-0 {
+                  flex: 0;
+                  &:after {
+                    display: none;
+                  }
+                }
+                &.flex-1 {
+                  flex: 1;
+                }
+                &.flex-2 {
+                  flex: 2;
+                }
+                &.flex-3 {
+                  flex: 3;
+                }
+
+                &:after {
+                  content: "";
+                  position: absolute;
+                  height: 6px;
+                  width: 6px;
+                  border-radius: 100%;
+                  background: $black;
+                }
+
+                &.left {
+                  &:after {
+                    right: 0;
+                  }
+                }
+                .mask {
+                  background: $white;
+                  width: 100%;
+                  height: 6px;
+                  z-index: 9;
+                  position: absolute;
+                  &.right {
+                    right: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
