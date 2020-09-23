@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import useMousePosition from "../hooks/useMousePosition"
+import { motion } from "framer-motion"
 
 //Components
 import Header from "./header"
@@ -20,14 +22,38 @@ const Layout = ({ children }) => {
   `)
 
   const [menuState, setMenuState] = useState(false)
+  const [cursorHovered, setCursorHovered] = useState(false)
+
+  const { x, y } = useMousePosition()
+
   return (
     <div className="app">
+      <motion.div
+        animate={{
+          x: x - 16,
+          y: y - 16,
+          scale: cursorHovered ? 1.2 : 1,
+          opacity: cursorHovered ? 0.8 : 0,
+        }}
+        transition={{
+          ease: "linear",
+          duration: 0.2,
+        }}
+        className="cursor"
+      ></motion.div>
       <Header
         menuState={menuState}
         setMenuState={setMenuState}
         siteTitle={siteData.site.siteMetadata.title}
+        setCursorHovered={setCursorHovered}
       />
-      <Menu menuState={menuState} setMenuState={setMenuState} />
+      <Menu
+        x={x}
+        y={y}
+        menuState={menuState}
+        setMenuState={setMenuState}
+        setCursorHovered={setCursorHovered}
+      />
       <div>
         <main>{children}</main>
       </div>
